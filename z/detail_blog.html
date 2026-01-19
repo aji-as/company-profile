@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html class="light scroll-smooth" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kanara House - Blog Detail</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2D4636",
+                        "accent": "#C36A2D",
+                        "background-light": "#F5F1E3",
+                        "background-dark": "#171b18",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#232925",
+                    },
+                    fontFamily: {
+                        "display": ["Playfair Display", "serif"],
+                        "body": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "2rem",
+                        "3xl": "3rem", // Added for extra smoothness
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        /* Smooth Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F5F1E3; }
+        ::-webkit-scrollbar-thumb { background: #2D4636; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1f3025; }
+        
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .font-sans { font-family: 'Work Sans', sans-serif; }
+        
+        /* Typography for article content */
+        .article-content p {
+            margin-bottom: 2rem;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: rgba(45, 70, 54, 0.8);
+        }
+        .dark .article-content p { color: rgba(255, 255, 255, 0.8); }
+        
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #2D4636;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        .dark .article-content h2 { color: white; }
+        
+        @media (min-width: 768px) {
+            .article-content h2 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-primary dark:text-background-light font-body antialiased selection:bg-accent selection:text-white">
+
+<div id="sidebar-backdrop" class="fixed inset-0 bg-black/60 z-[60] hidden transition-opacity duration-300 opacity-0 backdrop-blur-sm" onclick="toggleSidebar()"></div>
+
+<div id="mobile-sidebar" class="fixed top-0 right-0 h-full w-[80%] max-w-[320px] bg-background-light dark:bg-background-dark z-[70] transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col border-l border-primary/10">
+    <div class="p-6 flex items-center justify-between border-b border-primary/10">
+        <h2 class="font-serif text-2xl font-bold text-primary dark:text-white">Kanara.</h2>
+        <button onclick="toggleSidebar()" class="p-2 text-primary hover:text-accent transition-colors">
+            <span class="material-symbols-outlined text-3xl">close</span>
+        </button>
+    </div>
+    <nav class="flex-1 overflow-y-auto p-6 space-y-6">
+        <a onclick="toggleSidebar()" href="#" class="block text-xl font-serif font-medium text-primary hover:text-accent transition-colors">Home</a>
+        <a onclick="toggleSidebar()" href="#" class="block text-xl font-serif font-medium text-primary hover:text-accent transition-colors">Menu</a>
+        <a onclick="toggleSidebar()" href="#" class="block text-xl font-serif font-medium text-primary hover:text-accent transition-colors">Shop</a>
+        <a onclick="toggleSidebar()" href="#" class="block text-xl font-serif font-medium text-primary hover:text-accent transition-colors">Our Story</a>
+        <a onclick="toggleSidebar()" href="#" class="block text-xl font-serif font-bold text-accent transition-colors">Journal</a>
+    </nav>
+    <div class="p-6 border-t border-primary/10">
+        <button class="w-full py-4 rounded-xl bg-primary text-white font-bold hover:bg-primary/90 transition-colors shadow-lg">
+            Order Online
+        </button>
+    </div>
+</div>
+
+<header id="navbar" class="fixed top-0 z-50 w-full transition-all duration-300 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-transparent">
+    <div class="mx-auto flex h-20 md:h-24 max-w-[1400px] items-center justify-between px-6 lg:px-12">
+        <div class="flex items-center gap-4 text-primary dark:text-white">
+            <a class="flex items-center gap-2 group" href="/">
+                <span class="material-symbols-outlined text-3xl text-accent group-hover:rotate-12 transition-transform duration-300">local_cafe</span>
+                <h2 class="text-2xl font-serif font-bold tracking-tight">Kanara House</h2>
+            </a>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-sm font-medium hover:text-accent transition-colors" href="#">Menu</a>
+            <a class="text-sm font-medium hover:text-accent transition-colors" href="#">Shop</a>
+            <a class="text-sm font-medium hover:text-accent transition-colors" href="#">Our Story</a>
+            <a class="text-sm font-bold text-accent border-b-2 border-accent pb-0.5" href="#">Journal</a>
+        </nav>
+        <div class="flex items-center gap-4">
+            <button class="hidden sm:flex items-center justify-center rounded-full h-12 px-8 bg-primary hover:bg-primary/90 transition-all duration-300 text-white text-sm font-bold tracking-wide shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                Order Online
+            </button>
+            <button onclick="toggleSidebar()" class="md:hidden p-2 text-primary dark:text-white hover:bg-primary/10 rounded-full transition-colors">
+                <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<main class="pt-32 pb-20">
+    <section class="px-6 md:px-12 max-w-5xl mx-auto text-center mb-16">
+        <nav class="flex justify-center items-center gap-3 text-xs font-bold uppercase tracking-widest text-accent mb-8 animate-fade-in-up">
+            <a class="hover:underline hover:text-primary transition-colors" href="#">Ethical Sourcing</a>
+            <span class="text-primary/30">•</span>
+            <span>5 Min Read</span>
+        </nav>
+        <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl text-primary dark:text-white leading-[1.1] mb-10 drop-shadow-sm">
+            Beyond the Bean: Our Commitment to Direct Trade in Ethiopia
+        </h1>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md">
+                    <img alt="Elena" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQQc_5a5ZcF9uZuA0Hr-DMobIiMZH0hW_6kILV9UMQ_0qidsXuPPeC3MR7PwenVm9Fa3YcwrDslKW_8n4bqsGzD-XypjVvnQv9NcRoyfx12oBYSCIjPq8g_8qchWfodA4ndYRuYB8jwWATQ4t4RpnRP2CJzSCf0QzQEmDzEsoYLTirdmb1FCHIGD434MzgDlbykLKynrQa-Ds65_0wCAPO-VuGZ5NCvLUi-ocV-aIB2T-cl87vaIkXLaCZivv-A8YBXNLX_b4NJuYj"/>
+                </div>
+                <div class="text-left">
+                    <p class="text-base font-bold text-primary dark:text-white">Elena Rodriguez</p>
+                    <p class="text-xs text-primary/60 dark:text-gray-400 font-medium">Head of Coffee • Oct 24, 2023</p>
+                </div>
+            </div>
+            <div class="flex gap-2 sm:ml-4">
+                <button class="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-primary/10 text-primary hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-lg">share</span>
+                </button>
+                <button class="w-10 h-10 rounded-full flex items-center justify-center bg-white border border-primary/10 text-primary hover:bg-accent hover:text-white hover:border-accent transition-all shadow-sm">
+                    <span class="material-symbols-outlined text-lg">bookmark</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 mb-20">
+        <div class="aspect-[16/9] md:aspect-[21/9] w-full rounded-3xl overflow-hidden shadow-2xl relative group">
+            <div class="absolute inset-0 bg-primary/10 mix-blend-multiply z-10 transition-opacity group-hover:opacity-0 duration-500"></div>
+            <img alt="Coffee farm landscape" class="w-full h-full object-cover transform transition-transform duration-1000 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_oNagFsGxTRoe4QrWwiYF2UfkWf6iCNVwKqUguMxeoFt2DJieFdZ2r5h0PO9FPYvUvRe9qd2zKRt3bLFTjdVk4GiNtQn3MLWyEqUNCOgBIIYMYSKXcPwsP0XwAtV9aqoxF8GkJAgcotfvr0wWzSbLHYeeJUpkKzjzi6ZLtyjh6gUMoYAT9tLr0WkK3rsAs1uTLwv9hCWWzer6ZzcejlowXTUu429H_jhHNJppaNThoEom56QOR0aUpI8IPrCnUjLS0uLjSoFTWyPc"/>
+        </div>
+    </div>
+
+    <article class="max-w-3xl mx-auto px-6">
+        <div class="article-content">
+            <p class="text-xl md:text-2xl font-medium !text-primary dark:!text-white mb-12 italic border-l-4 border-accent pl-6 leading-relaxed">
+                The journey of a single coffee cherry from the high-altitude forests of Guji to your morning cup at Kanara House is a story of thousands of miles, hundreds of hands, and one unwavering commitment to equity.
+            </p>
+            <p>
+                For years, the coffee industry has relied on complex supply chains that often obscure the identity and the struggles of the people at the source. At Kanara House, we decided early on that "business as usual" wasn't enough. We wanted to see the soil, shake the hands of the producers, and understand the true cost of quality.
+            </p>
+            
+            <div class="my-20">
+                <blockquote class="relative py-10 px-8 md:px-16 text-center bg-white dark:bg-surface-dark rounded-3xl shadow-lg border border-primary/5">
+                    <span class="absolute top-8 left-8 text-6xl text-accent/20 font-serif leading-none">“</span>
+                    <p class="text-2xl md:text-3xl font-serif italic text-primary dark:text-white leading-snug relative z-10">
+                        Sustainability isn't just about the environment; it's about sustaining the livelihoods of the families who make our morning ritual possible.
+                    </p>
+                    <cite class="block mt-6 text-sm font-bold uppercase tracking-widest text-accent not-italic">— Elena Rodriguez</cite>
+                    <span class="absolute bottom-8 right-8 text-6xl text-accent/20 font-serif leading-none rotate-180">“</span>
+                </blockquote>
+            </div>
+
+            <h2>The Guji Highlands</h2>
+            <p>
+                This spring, our team traveled back to the Oromia region of Ethiopia. Reaching the washing stations in Guji requires a three-day journey through winding mountain paths, but the reward is unparalleled. Here, coffee grows under the canopy of ancient indigenous trees, benefiting from nutrient-rich volcanic soil and a climate that allows cherries to ripen slowly, developing complex floral and stone fruit notes.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-16">
+                <figure class="group">
+                    <div class="rounded-2xl overflow-hidden shadow-lg h-80 relative">
+                        <img alt="Coffee drying" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASPpWG0Q5NBfdw86LGmGkYBayuAsCWj5gKINiWUgIuGl7d_CtLIe0Prwo_oA_c2B-5Epv3kbC9TIRjoSGqEimxDrWiuDV4k6h0Gfemm3q7Pc950JdMyVUT0wefujPCwEzAs_ZNTOqkyawbIk1x-NSIJLUXco4uBh7P0CVeSN1dzf0U4vRG_Jcx3rXAaBfVOS2uj_NBiSwJwcv9ZgrwRjexRQwjWMm1993Kf9BuBWgZSIjPaI_vr56t4nTnJ1ugLIyjK4Z0M7JqTJUp"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <figcaption class="mt-3 text-xs text-center text-primary/60 font-medium">Traditional drying beds in Oromia</figcaption>
+                </figure>
+                <figure class="group">
+                    <div class="rounded-2xl overflow-hidden shadow-lg h-80 relative">
+                        <img alt="Coffee sorting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMWWr8IL8gNNs2DxO4p1XEAECd0uuTCdsDer4KbqXR1BSoCUcOzPbaUuD5Y75laz1PCNhllJOykRCnu_wFahRJ-_CO24dy4Brf6WDF5kVnniqwgcRr5Ig2auiHs23Urr39tEgluhJm_oWfqgoC0FKVus3yTEGbmZZYOOeV7oVIxzPxrEu3X6Tq0Ia1N-JNcMLXzy62hicBXkvE2rpmhQdrY-9Qow4M-FGCeA-Yteq6xEpGqIMPU9bs4H-6BgNoDhP9MTFuTiSt_VXT"/>
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
+                    </div>
+                    <figcaption class="mt-3 text-xs text-center text-primary/60 font-medium">Hand sorting for premium quality</figcaption>
+                </figure>
+            </div>
+
+            <p>
+                What makes our Direct Trade model different is transparency. By bypassing traditional auctions, we are able to pay premiums that are significantly higher than Fair Trade minimums. During this visit, we finalized our second year of a long-term partnership with the Kercha cooperative, which has allowed them to invest in a new water filtration system for their processing facility.
+            </p>
+
+            <h2>Why Precision Matters</h2>
+            <p>
+                Back in Seattle, we treat these beans with the reverence they deserve. Our roasting profile for the Guji Guji Heirloom is delicate. We use a light-medium roast to preserve the jasmine and peach acidity that characterizes this specific lot. Every morning, our baristas calibrate the grinders to ensure that whether you're drinking a pour-over or an oat milk latte, the terroir of Oromia shines through.
+            </p>
+        </div>
+
+        <div class="mt-20 pt-10 border-t border-primary/10 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="px-4 py-2 bg-background-light border border-primary/10 rounded-full text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors cursor-pointer">Coffee Sourcing</span>
+                <span class="px-4 py-2 bg-background-light border border-primary/10 rounded-full text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors cursor-pointer">Sustainability</span>
+                <span class="px-4 py-2 bg-background-light border border-primary/10 rounded-full text-xs font-bold text-primary hover:bg-primary hover:text-white transition-colors cursor-pointer">Ethiopia</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-xs font-bold uppercase tracking-wider text-primary/40">Share:</span>
+                <div class="flex gap-2">
+                    <a class="w-10 h-10 rounded-full bg-white border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm hover:-translate-y-1" href="#"><span class="material-symbols-outlined text-lg">public</span></a>
+                    <a class="w-10 h-10 rounded-full bg-white border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm hover:-translate-y-1" href="#"><span class="material-symbols-outlined text-lg">photo_camera</span></a>
+                    <a class="w-10 h-10 rounded-full bg-white border border-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all shadow-sm hover:-translate-y-1" href="#"><span class="material-symbols-outlined text-lg">mail</span></a>
+                </div>
+            </div>
+        </div>
+    </article>
+</main>
+
+<section class="py-24 bg-white dark:bg-surface-dark px-6 border-t border-primary/5">
+    <div class="max-w-[1400px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+                <span class="text-accent font-bold uppercase tracking-[0.2em] text-xs mb-3 block">Continue Reading</span>
+                <h2 class="font-serif text-4xl md:text-5xl text-primary dark:text-white">Related Stories</h2>
+            </div>
+            <a class="group inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-accent transition-colors" href="#">
+                View All Posts 
+                <span class="material-symbols-outlined text-lg transition-transform group-hover:translate-x-1">arrow_forward</span>
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <article class="group cursor-pointer">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 shadow-md relative">
+                    <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6b9hfo5rNFhmgUVDq3H6m54ij3fLCxIpfEcJwWMcoexX6gACF5cvUOEfScygS5l37T9jwRTqY1Duigsis3Bjs89tCQ1fXPC6kGAB88zcqfG_nlBMI7LHdQexUslo7uUSzFO3FpAESetJiLA9_r-016BVfhiD3OqVXQWAt8Z_ao2lwDnGuDvUczaPu9v3ftALgKCbfzzFjnvfS-8g7o6FjuJDJijzRNViDsfKYoEwldnFsJkNGAHbX2mpXTNnXOyIMmlU_P5QrPiRi");'></div>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-accent uppercase tracking-wider">Design</div>
+                </div>
+                <h3 class="font-serif text-2xl text-primary dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">The Art of the Third Place: Designing for Calm</h3>
+                <p class="text-primary/60 dark:text-gray-400 line-clamp-2 leading-relaxed">Inside the Japandi-inspired philosophy behind our physical spaces and how it affects your coffee experience.</p>
+            </article>
+            
+            <article class="group cursor-pointer">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 shadow-md relative">
+                    <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD_oNagFsGxTRoe4QrWwiYF2UfkWf6iCNVwKqUguMxeoFt2DJieFdZ2r5h0PO9FPYvUvRe9qd2zKRt3bLFTjdVk4GiNtQn3MLWyEqUNCOgBIIYMYSKXcPwsP0XwAtV9aqoxF8GkJAgcotfvr0wWzSbLHYeeJUpkKzjzi6ZLtyjh6gUMoYAT9tLr0WkK3rsAs1uTLwv9hCWWzer6ZzcejlowXTUu429H_jhHNJppaNThoEom56QOR0aUpI8IPrCnUjLS0uLjSoFTWyPc");'></div>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-accent uppercase tracking-wider">Guide</div>
+                </div>
+                <h3 class="font-serif text-2xl text-primary dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">Perfecting the V60 Pour-Over at Home</h3>
+                <p class="text-primary/60 dark:text-gray-400 line-clamp-2 leading-relaxed">Our head barista shares the secrets to a balanced, clean cup every morning using simple tools.</p>
+            </article>
+            
+            <article class="group cursor-pointer">
+                <div class="aspect-[4/3] rounded-3xl overflow-hidden mb-6 shadow-md relative">
+                    <div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuASPpWG0Q5NBfdw86LGmGkYBayuAsCWj5gKINiWUgIuGl7d_CtLIe0Prwo_oA_c2B-5Epv3kbC9TIRjoSGqEimxDrWiuDV4k6h0Gfemm3q7Pc950JdMyVUT0wefujPCwEzAs_ZNTOqkyawbIk1x-NSIJLUXco4uBh7P0CVeSN1dzf0U4vRG_Jcx3rXAaBfVOS2uj_NBiSwJwcv9ZgrwRjexRQwjWMm1993Kf9BuBWgZSIjPaI_vr56t4nTnJ1ugLIyjK4Z0M7JqTJUp");'></div>
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-accent uppercase tracking-wider">Roastery</div>
+                </div>
+                <h3 class="font-serif text-2xl text-primary dark:text-white mb-3 group-hover:text-accent transition-colors leading-tight">Mastering Small Batch Roasting</h3>
+                <p class="text-primary/60 dark:text-gray-400 line-clamp-2 leading-relaxed">Why we choose to roast in 5kg batches to ensure maximum quality control and flavor consistency.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<footer class="bg-primary text-background-light/80 pt-20 pb-10 border-t border-white/5">
+    <div class="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-full bg-accent flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-lg">local_cafe</span>
+                </div>
+                <h3 class="font-serif text-2xl font-bold text-white">Kanara House</h3>
+            </div>
+            <p class="text-sm leading-relaxed font-light opacity-80">
+                An urban sanctuary for coffee lovers, creators, and dreamers. Sustainable sips in a serene space.
+            </p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-lg mb-2 text-white">Explore</h4>
+            <a class="hover:text-accent hover:translate-x-1 transition-all text-sm" href="#">Our Menu</a>
+            <a class="hover:text-accent hover:translate-x-1 transition-all text-sm" href="#">Shop Beans</a>
+            <a class="hover:text-accent hover:translate-x-1 transition-all text-sm" href="#">Journal</a>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-lg mb-2 text-white">Contact</h4>
+            <p class="text-sm flex items-start gap-3 opacity-80">
+                <span class="material-symbols-outlined text-lg text-accent mt-0.5">location_on</span>
+                1248 Evergreen Avenue<br/>Seattle, WA 98101
+            </p>
+            <p class="text-sm flex items-center gap-3 opacity-80">
+                <span class="material-symbols-outlined text-lg text-accent">call</span>
+                (206) 555-0198
+            </p>
+        </div>
+        <div class="flex flex-col gap-4">
+            <h4 class="font-bold text-lg mb-2 text-white">Newsletter</h4>
+            <div class="relative">
+                <input class="w-full bg-white/10 border border-white/20 rounded-full px-5 py-3 text-sm text-white placeholder-white/30 focus:outline-none focus:border-accent transition-colors" placeholder="Email address" type="email"/>
+                <button class="absolute right-2 top-2 p-1.5 bg-accent rounded-full text-white hover:bg-white hover:text-accent transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-xs opacity-60 gap-4 max-w-[1400px] mx-auto px-6 md:px-12">
+        <p>© 2024 Kanara House. All rights reserved.</p>
+        <div class="flex gap-6">
+            <a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+            <a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Sidebar Logic
+    function toggleSidebar() {
+        const sidebar = document.getElementById('mobile-sidebar');
+        const backdrop = document.getElementById('sidebar-backdrop');
+        const body = document.body;
+        
+        sidebar.classList.toggle('translate-x-full');
+        
+        if (backdrop.classList.contains('hidden')) {
+            backdrop.classList.remove('hidden');
+            setTimeout(() => backdrop.classList.remove('opacity-0'), 10);
+            body.style.overflow = 'hidden';
+        } else {
+            backdrop.classList.add('opacity-0');
+            setTimeout(() => backdrop.classList.add('hidden'), 300);
+            body.style.overflow = '';
+        }
+    }
+
+    // Navbar Scroll Logic
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 20) {
+            navbar.classList.add('shadow-sm');
+            navbar.classList.add('bg-background-light/95');
+            navbar.classList.remove('bg-background-light/90');
+            navbar.classList.add('border-primary/5');
+            navbar.classList.remove('border-transparent');
+        } else {
+            navbar.classList.remove('shadow-sm');
+            navbar.classList.remove('bg-background-light/95');
+            navbar.classList.add('bg-background-light/90');
+            navbar.classList.remove('border-primary/5');
+            navbar.classList.add('border-transparent');
+        }
+    });
+</script>
+
+</body>
+</html>
