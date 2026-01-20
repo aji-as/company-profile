@@ -20,7 +20,7 @@
             </div>
 
             <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-primary dark:text-white leading-[1.05] mb-10 drop-shadow-sm tracking-tight max-w-5xl">
-                <span class="italic font-light text-accent/90">{{ $articel->title }}</span>
+                <span class="italic font-light text-accent/90">{{ $blog->title }}</span>
             </h1>
 
             <div class="flex items-center gap-4">
@@ -102,7 +102,7 @@
             <div class="lg:col-span-8 lg:col-start-4 font-display text-lg md:text-xl leading-relaxed text-primary/80 dark:text-gray-300" id="intro">
                 
                 <p class="mb-12">
-                    {{ $articel->content }}
+                    {{ $blog->content }}
                 </p>
                 
 

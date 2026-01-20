@@ -15,10 +15,9 @@ class BlogController extends Controller
         return view('home.blog', compact('articels'));
     }
 
-    public function show($slug)
+    public function show(Blogs $blog)
     {
-        $articel = Blogs::where('slug', $slug)->firstOrFail();
-        $relatedArticels = Blogs::where('id', '!=', $articel->id)->latest()->limit(3)->get();
-        return view('home.blog_show', compact('articel', 'relatedArticels'));
+        $relatedArticels = Blogs::where('id', '!=', $blog->id)->latest()->limit(3)->get();
+        return view('home.blog_show', compact('blog', 'relatedArticels'));
     }
 }
