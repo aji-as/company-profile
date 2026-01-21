@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Dashboard\AnalictycController;
+use App\Http\Controllers\dashboard\OrdersController;
+use App\Http\Controllers\dashboard\ProductController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home\HomeController;
@@ -22,3 +24,5 @@ Route::get('/galery', [GaleryController::class, 'index'])->name('galery');
 
 // Dashboard
 Route::get('/dashboard', [AnalictycController::class, 'analityc'])->name('analityc');
+Route::get('/dashboard/orders',[OrdersController::class , 'index'])->name('orders');
+Route::get('/dashboard/products',[ProductController::class, 'index'])->name('products');

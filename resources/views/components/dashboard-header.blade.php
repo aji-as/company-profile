@@ -13,12 +13,14 @@
             </div>
 
             <div class="flex items-center gap-3 md:gap-4">
+                @if(request()->routeIs('orders'))
                 <div class="relative hidden md:block group">
                     <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 material-symbols-outlined text-[20px] group-focus-within:text-primary transition-colors">search</span>
                     <input x-model="searchQuery" 
                            class="bg-white border-transparent rounded-lg h-10 pl-10 pr-4 text-sm w-48 lg:w-64 focus:ring-2 focus:ring-primary/20 focus:border-primary/20 placeholder-gray-400 shadow-sm transition-all" 
                            placeholder="Search orders..." type="text"/>
                 </div>
+                @endif
 
                 <div class="relative" x-data>
                     <button @click="notificationsOpen = !notificationsOpen" @click.outside="notificationsOpen = false"
