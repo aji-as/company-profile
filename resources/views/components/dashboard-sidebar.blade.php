@@ -23,47 +23,47 @@
                 </div>
                 <button @click="sidebarOpen = false" class="lg:hidden text-white/70 hover:text-white">
                     <span class="material-symbols-outlined">close</span>
-                </button>
+                </button>  
             </div>
 
             <nav class="flex flex-col gap-2">
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white shadow-sm border border-white/5 transition-all hover:bg-white/20 group" href="#">
+
+                <x-dashboard-nav-link route="analytics" > 
                     <span class="material-symbols-outlined filled text-green-300 group-hover:text-white transition-colors">dashboard</span>
                     <span class="text-sm font-medium">Overview</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all group" href="#">
+                </x-dashboard-nav-link>
+                <x-dashboard-nav-link route="orders">
                     <span class="material-symbols-outlined group-hover:scale-110 transition-transform">shopping_bag</span>
                     <span class="text-sm font-medium">Orders</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all group" href="#">
+                </x-dashboard-nav-link>
+                <x-dashboard-nav-link route="products">
                     <span class="material-symbols-outlined group-hover:scale-110 transition-transform">restaurant_menu</span>
-                    <span class="text-sm font-medium">Menu</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all group" href="#">
+                    <span class="text-sm font-medium">Products</span>
+                </x-dashboard-nav-link>
+                {{-- <x-dashboard-nav-link route="customers">
                     <span class="material-symbols-outlined group-hover:scale-110 transition-transform">group</span>
                     <span class="text-sm font-medium">Customers</span>
-                </a>
-                <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-all group" href="#">
-                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">analytics</span>
-                    <span class="text-sm font-medium">Analytics</span>
-                </a>
+                </x-dashboard-nav-link> --}}
+                <x-dashboard-nav-link route="blogs">
+                    <span class="material-symbols-outlined group-hover:scale-110 transition-transform">article</span>
+                    <span class="text-sm font-medium">Blogs</span>
+                </x-dashboard-nav-link>
             </nav>
         </div>
 
         <div class="flex flex-col gap-2">
-            <a class="flex items-center gap-3 px-4 py-3 rounded-lg text-white/70 hover:bg-white/5 hover:text-white transition-colors" href="#">
-                <span class="material-symbols-outlined">settings</span>
-                <span class="text-sm font-medium">Settings</span>
-            </a>
             <div class="mt-4 pt-4 border-t border-white/10 flex items-center gap-3 px-2">
-                <img src="https://ui-avatars.com/api/?name=Alex+Morgan&background=random&color=fff" alt="Profile" class="size-10 rounded-full border-2 border-white/20">
+                <img src="https://ui-avatars.com/api/?name=Alex+Morgan&Zbackground=random&color=fff" alt="Profile" class="size-10 rounded-full border-2 border-white/20">
                 <div class="flex flex-col">
-                    <p class="text-white text-sm font-medium">Alex Morgan</p>
+                    <p class="text-white text-sm font-medium">{{ auth()->user()->name ?? 'aku' }}</p>
                     <p class="text-white/50 text-xs">Manager</p>
                 </div>
-                <button class="ml-auto text-white/50 hover:text-white transition-transform hover:translate-x-1">
-                    <span class="material-symbols-outlined text-xl">logout</span>
-                </button>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="ml-auto text-white/50 hover:text-white transition-transform hover:translate-x-1">
+                        <span class="material-symbols-outlined text-xl">logout</span>
+                    </button>
+                </form>
             </div>
         </div>
     </aside>

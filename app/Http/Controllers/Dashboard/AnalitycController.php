@@ -5,13 +5,14 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AnalictycController extends Controller
+class AnalitycController extends Controller
 {
 
-    public function analityc(){
+    public function index(){
 
         return view('dashboard.analityc');
 
     }
     
 }
+

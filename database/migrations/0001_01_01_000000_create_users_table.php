@@ -14,9 +14,11 @@ return new class extends Migration
             $table->string('name'); // Nama lengkap
             $table->string('email')->unique(); // Email login
             $table->string('password'); // Hash password
-            $table->string('phone')->nullable(); // Nomor WhatsApp
+            $table->string('phone')->default(0); // Nomor WhatsApp
+            $table->string('google_id')->nullable()->unique(); // Google OAuth ID
+            $table->string('avatar')->nullable(); // Avatar profil
             $table->text('address')->nullable(); // Alamat default
-            $table->enum('role', ['admin', 'customer'])->default('customer'); // Role
+            $table->enum('role', ['admin', 'customer'])->default('admin'); // Role
             $table->timestamp('email_verified_at')->nullable(); // Verifikasi email
             $table->rememberToken(); // Remember me
             $table->timestamps(); // created_at & updated_at

@@ -244,4 +244,4 @@
             </div>
         </div>
 
-    </x-dashboard-layout>
+</x-dashboard-layout>
