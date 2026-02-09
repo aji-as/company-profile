@@ -18,6 +18,7 @@ use App\Http\Controllers\Dashboard\AnalitycController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+Route::get('/shop/detail/{product}', [ShopController::class, 'show'])->name('shop.detail');
 Route::get('/place', [GaleryController::class, 'index'])->name('galery');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');
@@ -41,6 +42,8 @@ Route::get('/dashboard', [AnalitycController::class, 'index'])->name('analytics'
     Route::get('/dashboard/products/add', [ProductController::class, 'addProduct'])->name('products.add');
     Route::post('/dashboard/products/store', [ProductController::class, 'storeProduct'])->name('products.store');
     Route::get('/dashboard/products/edit/{product}', [ProductController::class, 'editProduct'])->name('products.edit');
+    Route::post('/dashboard/products/update/{product}', [ProductController::class, 'updateProduct'])->name('products.update');
+    Route::post('/dashboard/products/delete/{product}', [ProductController::class, 'deleteProduct'])->name('products.delete');
 
 
 

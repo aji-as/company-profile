@@ -134,13 +134,12 @@
 
                                             <td class="px-6 py-4 text-right">
                                                 <div class="flex items-center justify-end gap-1 opacity-100 sm:opacity-60 sm:group-hover:opacity-100 transition-opacity">
-                                                    <a href="#" class="size-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors" title="Edit">
+                                                    <a href="{{ route('products.edit', $product->id) }}" class="size-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors" title="Edit">
                                                         <span class="material-symbols-outlined text-[18px]">edit</span>
                                                     </a>
                                                     
-                                                    <form action="#" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                                                    <form action="{{ route('products.delete', $product->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                                                         @csrf
-                                                        @method('DELETE')
                                                         <button type="submit" class="size-8 flex items-center justify-center text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Delete">
                                                             <span class="material-symbols-outlined text-[18px]">delete</span>
                                                         </button>

@@ -9,7 +9,7 @@
                     <div>
                         <nav class="flex mb-2" aria-label="Breadcrumb">
                             <ol class="inline-flex items-center space-x-1 md:space-x-3 text-xs font-medium text-gray-500">
-                                <li><a href="{{ route('products.index') }}" class="hover:text-primary transition-colors">Produk</a></li>
+                                <li><a href="{{ route('products') }}" class="hover:text-primary transition-colors">Produk</a></li>
                                 <li><span class="mx-1 text-gray-400">/</span></li>
                                 <li class="text-gray-900 font-semibold">Edit Produk</li>
                             </ol>
@@ -17,7 +17,7 @@
                         <h2 class="text-3xl font-extrabold text-gray-900 tracking-tight">Edit Produk</h2>
                         <p class="text-sm text-gray-500 mt-1">Mengubah detail untuk <span class="text-primary font-medium">{{ $product->name }}</span></p>
                     </div>
-                    <a href="{{ route('products.index') }}" 
+                    <a href="{{ route('products') }}" 
                         class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 bg-white border border-gray-200 px-4 py-2.5 rounded-xl shadow-sm hover:bg-gray-50 hover:text-gray-900 transition-all active:scale-95">
                         <span class="material-symbols-outlined text-sm">arrow_back</span>
                         Kembali
@@ -26,7 +26,7 @@
 
                 <form action="{{ route('products.update', $product->id) }}" method="POST" enctype="multipart/form-data" class="space-y-6">
                     @csrf
-                    @method('PUT')
+
                     
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                         
@@ -43,14 +43,14 @@
                                     <div>
                                         <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">Nama Produk <span class="text-red-500">*</span></label>
                                         <input type="text" name="name" id="name" value="{{ old('name', $product->name) }}" 
-                                            class="w-full rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all @error('name') border-red-500 @enderror">
+                                            class="w-full input rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all @error('name') border-red-500 @enderror">
                                         @error('name') <p class="text-red-500 text-xs mt-1.5 font-medium">{{ $message }}</p> @enderror
                                     </div>
 
                                     <div>
                                         <label for="description" class="block text-sm font-semibold text-gray-700 mb-1.5">Deskripsi Produk</label>
                                         <textarea name="description" id="description" rows="6" 
-                                            class="w-full rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all resize-none">{{ old('description', $product->description) }}</textarea>
+                                            class="w-full input rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all resize-none">{{ old('description', $product->description) }}</textarea>
                                         @error('description') <p class="text-red-500 text-xs mt-1.5 font-medium">{{ $message }}</p> @enderror
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div>
                                         <label for="category_id" class="block text-sm font-semibold text-gray-700 mb-1.5">Kategori <span class="text-red-500">*</span></label>
-                                        <select name="category_id" id="category_id" class="w-full rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all cursor-pointer">
+                                        <select name="category_id" id="category_id" class="w-full input rounded-xl border-gray-200 focus:border-primary focus:ring focus:ring-primary/20 transition-all cursor-pointer">
                                             @foreach($categories as $category)
                                                 <option value="{{ $category->id }}" {{ old('category_id', $product->category_id) == $category->id ? 'selected' : '' }}>
                                                     {{ $category->name }}
@@ -79,7 +79,7 @@
                                         <div class="relative group">
                                             <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400 group-focus-within:text-primary font-bold">Rp</span>
                                             <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" 
-                                                class="w-full rounded-xl border-gray-200 pl-12 focus:border-primary focus:ring focus:ring-primary/20 transition-all font-semibold">
+                                                class="w-full input rounded-xl border-gray-200 pl-12 focus:border-primary focus:ring focus:ring-primary/20 transition-all font-semibold">
                                         </div>
                                     </div>
                                 </div>
@@ -153,7 +153,7 @@
 
                     {{-- Footer Actions --}}
                     <div class="flex items-center justify-end gap-4 pb-12 mt-4">
-                        <a href="{{ route('products.index') }}" class="px-6 py-3 text-sm font-bold text-gray-500 hover:text-gray-800 transition-colors">
+                        <a href="{{ route('products') }}" class="px-6 py-3 text-sm font-bold text-gray-500 hover:text-gray-800 transition-colors">
                             Batalkan Perubahan
                         </a>
                         <button type="submit" class="px-10 py-3 text-sm font-bold text-white bg-primary rounded-xl hover:bg-primary-hover shadow-lg shadow-primary/20 transform transition-all active:scale-95 flex items-center gap-2">

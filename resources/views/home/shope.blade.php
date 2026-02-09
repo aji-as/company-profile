@@ -44,237 +44,102 @@
         <section class="pb-20 px-6 md:px-12 bg-background-light dark:bg-background-dark min-h-screen">
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                    {{-- card product begin --}}
+                        @foreach ($products as $product)
+                        <a href="{{ route('shop.detail', $product->id) }}">
+                            <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
+                                <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
+                                    <img alt="Sanctuary Blend Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZKW06Ac4mwyFLJHs_1V9X0f7RRFiGb838XjHwxay8UqWa9SUuIapPXmCn6BmNnYsTSHlL8mfypVImeno729QQsvCrzehPUuPh3YGVpVNLb8dIzHpPvAlNTJtYQ7g4f0a5j1a7eiUXvjOssbwl3iSCyIVP1rSRU1fWkbIFS-CqTpERJjY81FOGW9Ml02mtOAT3EO-sd6dXtKt6v78cJNxSEpmFjfjrjxnLggcawNtMepD_8td6t6L3yjDIXzHdMyGnsjpB_U1YulQ0" />
+                                    <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide">Bestseller</div>
+                                    <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
+                                        <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
+                                    </button>
+                                </div>
+                                <div class="p-5 flex flex-col flex-grow">
+                                    <div class="mb-1">
+                                        <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">{{$product->category->name}}</p>
+                                    </div>
+                                    <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
+                                        <a href="#">{{ $product->name}}</a>
+                                    </h3>
+                                    <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
+                                        {{ $product->description}}
+                                    </p>
+                                    <div class="mt-auto flex items-center justify-between">
+                                        <span class="font-serif text-lg font-bold text-primary dark:text-white">{{ $product->price }}</span>
+                                        <div class="flex gap-1">
+                                            <span class="w-3 h-3 rounded-full bg-[#5D4037]" title="Dark Roast"></span>
+                                            <span class="w-3 h-3 rounded-full bg-[#795548]" title="Medium-Dark"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                            
+                        @endforeach
+                    {{-- card product end --}}
                     
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Sanctuary Blend Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZKW06Ac4mwyFLJHs_1V9X0f7RRFiGb838XjHwxay8UqWa9SUuIapPXmCn6BmNnYsTSHlL8mfypVImeno729QQsvCrzehPUuPh3YGVpVNLb8dIzHpPvAlNTJtYQ7g4f0a5j1a7eiUXvjOssbwl3iSCyIVP1rSRU1fWkbIFS-CqTpERJjY81FOGW9Ml02mtOAT3EO-sd6dXtKt6v78cJNxSEpmFjfjrjxnLggcawNtMepD_8td6t6L3yjDIXzHdMyGnsjpB_U1YulQ0" />
-                            <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide">Bestseller</div>
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Signature Blend</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Sanctuary Blend</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Our flagship house blend. Notes of dark chocolate, toasted hazelnut, and dried fig. Smooth and comforting.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$18.00</span>
-                                <div class="flex gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#5D4037]" title="Dark Roast"></span>
-                                    <span class="w-3 h-3 rounded-full bg-[#795548]" title="Medium-Dark"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Ethiopia Yirgacheffe Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_UW57rGDWR5yJI3JR4Ue0KrvNq92BYTdhyic4Y7umSdzfk6VGCxmKiYyR3xCeUXeehkkDcT2eyGzgCxsSkM-cCEDSdXcrmXpjwW5Fd4z4_0HRSOJH95MSOmazoQoe9vLEqtaKUF7XB96JccVKwdQJawW-mmbrOK4HrrtfzsY7lzz1bOBENg2bsxYVICIHpaDhO4Vp1x1tmtxls598ngOySnafEk9uQLjU7FNUBgvVJShjtZM5jiib-pBPKM1Rl040GGQ1t9vV3isa" />
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Single Origin</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Ethiopia Yirgacheffe</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Bright and floral with delicate tea-like body. Jasmine, bergamot, and peach notes.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$22.00</span>
-                                <div class="flex gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#D7CCC8]" title="Light Roast"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Colombia Huila Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMWWr8IL8gNNs2DxO4p1XEAECd0uuTCdsDer4KbqXR1BSoCUcOzPbaUuD5Y75laz1PCNhllJOykRCnu_wFahRJ-_CO24dy4Brf6WDF5kVnniqwgcRr5Ig2auiHs23Urr39tEgluhJm_oWfqgoC0FKVus3yTEGbmZZYOOeV7oVIxzPxrEu3X6Tq0Ia1N-JNcMLXzy62hicBXkvE2rpmhQdrY-9Qow4M-FGCeA-Yteq6xEpGqIMPU9bs4H-6BgNoDhP9MTFuTiSt_VXT" />
-                            <div class="absolute top-3 left-3 bg-primary text-white text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide">New Arrival</div>
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Single Origin</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Colombia Huila</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Balanced sweetness with caramel apple and citrus acidity. A perfect morning cup.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$20.00</span>
-                                <div class="flex gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#A1887F]" title="Medium Roast"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Kanara Ceramic Mug" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQQc_5a5ZcF9uZuA0Hr-DMobIiMZH0hW_6kILV9UMQ_0qidsXuPPeC3MR7PwenVm9Fa3YcwrDslKW_8n4bqsGzD-XypjVvnQv9NcRoyfx12oBYSCIjPq8g_8qchWfodA4ndYRuYB8jwWATQ4t4RpnRP2CJzSCf0QzQEmDzEsoYLTirdmb1FCHIGD434MzgDlbykLKynrQa-Ds65_0wCAPO-VuGZ5NCvLUi-ocV-aIB2T-cl87vaIkXLaCZivv-A8YBXNLX_b4NJuYj" />
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Merchandise</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Kanara Ceramic Mug</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Hand-thrown stoneware mug in speckled cream. 12oz capacity.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$28.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="V60 Dripper Set" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjAo2sOUIMufIHUXPaIItT0H-PFVSWcMq8TuB6bIO3FtlsEOxeP1GcePK7JFjbQtpibYTQPejziucOtW4NKHrZVmrjoK4QyX945ZA_vzCcL8Ae2gI1FNl6DvYodmdbHPk3n5t6f5MqeY7VEK5fW5UFFRp6dVjWIA1xkYFyzjDAy1F9KxsP-mJ6KoqffM302YzDvFLoy-wUGVZicW9owqgS89mXhjyUOenpw0eWuL11Kb_7N_uiD8piLn53_uE_LOZNMlWnGUD8lwQp" />
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Brewing Gear</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Hario V60 Starter Kit</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Everything you need to start brewing pour-over coffee at home. Includes dripper, server, and filters.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$35.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Cold Brew Blend" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6b9hfo5rNFhmgUVDq3H6m54ij3fLCxIpfEcJwWMcoexX6gACF5cvUOEfScygS5l37T9jwRTqY1Duigsis3Bjs89tCQ1fXPC6kGAB88zcqfG_nlBMI7LHdQexUslo7uUSzFO3FpAESetJiLA9_r-016BVfhiD3OqVXQWAt8Z_ao2lwDnGuDvUczaPu9v3ftALgKCbfzzFjnvfS-8g7o6FjuJDJijzRNViDsfKYoEwldnFsJkNGAHbX2mpXTNnXOyIMmlU_P5QrPiRi" />
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Specialty Blend</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Midnight Cold Brew</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Coarse ground blend specifically roasted for cold extraction. Low acidity, high chocolate notes.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$19.00</span>
-                                <div class="flex gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#3E2723]" title="Very Dark Roast"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Kanara Tote Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6b9hfo5rNFhmgUVDq3H6m54ij3fLCxIpfEcJwWMcoexX6gACF5cvUOEfScygS5l37T9jwRTqY1Duigsis3Bjs89tCQ1fXPC6kGAB88zcqfG_nlBMI7LHdQexUslo7uUSzFO3FpAESetJiLA9_r-016BVfhiD3OqVXQWAt8Z_ao2lwDnGuDvUczaPu9v3ftALgKCbfzzFjnvfS-8g7o6FjuJDJijzRNViDsfKYoEwldnFsJkNGAHbX2mpXTNnXOyIMmlU_P5QrPiRi" />
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Merchandise</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Canvas Market Tote</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Durable organic cotton canvas tote. Perfect for groceries or your daily essentials.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$25.00</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                            <img alt="Decaf Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAx0tqyo0bJP8rzcFaNeoF2w9cSJJGKrZYiQkMfL_QBy1x0CyKAN9ZcOeYyyz62TMDnk1eqQRzch0ggJOzC20KF-xaXrl7MpoFksur5rxSs5CaEN6CrNCQ6sLIw920-cmY-lYH5Iqzf0ZfiO4ptNRr72K1h7QzmwZSdyMKTaWHujkvaHXzLF958IKdA2ZnpNq4qrZkUbeUChY-m_6EgYqnXEJiB8kFy1EEPvweHjf3KeHa8kGy09BFwSEi32SZvzxezN6Psvmxg3sJc" />
-                            <div class="absolute top-3 left-3 bg-white/90 backdrop-blur-sm text-primary text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide">Swiss Water</div>
-                            <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                            </button>
-                        </div>
-                        <div class="p-5 flex flex-col flex-grow">
-                            <div class="mb-1">
-                                <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">Decaf</p>
-                            </div>
-                            <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                <a href="#">Sunset Decaf</a>
-                            </h3>
-                            <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                Swiss Water Process decaffeination. Full flavor without the jitters. Notes of brown sugar and malt.
-                            </p>
-                            <div class="mt-auto flex items-center justify-between">
-                                <span class="font-serif text-lg font-bold text-primary dark:text-white">$19.00</span>
-                                <div class="flex gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#8D6E63]" title="Medium Roast"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
 
                 </div>
 
-                <div class="mt-16 flex justify-center">
-                    <nav aria-label="Pagination">
-                        <ul class="flex items-center space-x-2">
-                            <li>
-                                <a class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10" href="#">
-                                    <span class="material-symbols-outlined text-sm">chevron_left</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-md dark:bg-white dark:text-primary font-bold" href="#">1</a>
-                            </li>
-                            <li>
-                                <a class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10" href="#">2</a>
-                            </li>
-                            <li>
-                                <a class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10" href="#">3</a>
-                            </li>
-                            <li>
-                                <a class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10" href="#">
-                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
+                {{-- paginate begin --}}
+                    @if ($products->hasPages())
+                        <div class="mt-16 flex justify-center">
+                            <nav aria-label="Pagination">
+                                <ul class="flex items-center space-x-2">
+
+                                    {{-- Previous Page --}}
+                                    <li>
+                                        @if ($products->onFirstPage())
+                                            <span class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-gray-100 text-gray-400 cursor-not-allowed">
+                                                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                                            </span>
+                                        @else
+                                            <a href="{{ $products->previousPageUrl() }}"
+                                            class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10">
+                                                <span class="material-symbols-outlined text-sm">chevron_left</span>
+                                            </a>
+                                        @endif
+                                    </li>
+
+                                    {{-- Page Numbers --}}
+                                    @foreach ($products->links()->elements[0] ?? [] as $page => $url)
+                                        <li>
+                                            @if ($page == $products->currentPage())
+                                                <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-md font-bold dark:bg-white dark:text-primary">
+                                                    {{ $page }}
+                                                </span>
+                                            @else
+                                                <a href="{{ $url }}"
+                                                class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10">
+                                                    {{ $page }}
+                                                </a>
+                                            @endif
+                                        </li>
+                                    @endforeach
+
+                                    {{-- Next Page --}}
+                                    <li>
+                                        @if ($products->hasMorePages())
+                                            <a href="{{ $products->nextPageUrl() }}"
+                                            class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-white text-primary hover:bg-primary/5 dark:bg-surface-dark dark:text-white dark:border-white/10">
+                                                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                                            </a>
+                                        @else
+                                            <span class="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/10 bg-gray-100 text-gray-400 cursor-not-allowed">
+                                                <span class="material-symbols-outlined text-sm">chevron_right</span>
+                                            </span>
+                                        @endif
+                                    </li>
+
+                                </ul>
+                            </nav>
+                        </div>
+                    @endif
+
+                {{-- paginate end --}}
             </div>
         </section>
 
