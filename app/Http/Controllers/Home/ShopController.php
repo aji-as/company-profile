@@ -18,8 +18,21 @@ class ShopController extends Controller
 
     public function show(Product $product)
     {
+        $product = Product::findOrFail($product->id);
         return view('home.shop-detail', compact('product'));
     }
 
+    
+    public function order(Product $product) {
+        $product = Product::findOrFail($product->id);
+
+        return view('home.chekout', compact('product'));
+    }
+
+    public function orderStore(Request $request)
+    {
+
+        
+    }
 
 }

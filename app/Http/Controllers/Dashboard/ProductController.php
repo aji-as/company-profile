@@ -8,7 +8,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-use LDAP\Result;
+
 
 class ProductController extends Controller
 {

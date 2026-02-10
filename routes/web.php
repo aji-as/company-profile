@@ -19,6 +19,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about',[AboutController::class, 'index'])->name('about');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::get('/shop/detail/{product}', [ShopController::class, 'show'])->name('shop.detail');
+Route::get('/order/{product}', [ShopController::class, 'order'])->name('order');
+Route::post('/order/store/{product}', [ShopController::class, 'orderStore'])->name('order.store');
 Route::get('/place', [GaleryController::class, 'index'])->name('galery');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/blog/{blog:slug}', [BlogController::class, 'show'])->name('blog.show');

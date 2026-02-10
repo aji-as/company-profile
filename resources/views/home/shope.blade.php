@@ -43,45 +43,90 @@
 
         <section class="pb-20 px-6 md:px-12 bg-background-light dark:bg-background-dark min-h-screen">
             <div class="max-w-7xl mx-auto">
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    {{-- card product begin --}}
-                        @foreach ($products as $product)
-                        <a href="{{ route('shop.detail', $product->id) }}">
-                            <div class="group flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-primary/5">
-                                <div class="relative aspect-[4/5] overflow-hidden bg-gray-100">
-                                    <img alt="Sanctuary Blend Coffee Bag" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZKW06Ac4mwyFLJHs_1V9X0f7RRFiGb838XjHwxay8UqWa9SUuIapPXmCn6BmNnYsTSHlL8mfypVImeno729QQsvCrzehPUuPh3YGVpVNLb8dIzHpPvAlNTJtYQ7g4f0a5j1a7eiUXvjOssbwl3iSCyIVP1rSRU1fWkbIFS-CqTpERJjY81FOGW9Ml02mtOAT3EO-sd6dXtKt6v78cJNxSEpmFjfjrjxnLggcawNtMepD_8td6t6L3yjDIXzHdMyGnsjpB_U1YulQ0" />
-                                    <div class="absolute top-3 left-3 bg-accent text-white text-xs font-bold px-2 py-1 rounded-md uppercase tracking-wide">Bestseller</div>
-                                    <button class="absolute bottom-4 right-4 bg-white text-primary p-2 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300 hover:bg-accent hover:text-white">
-                                        <span class="material-symbols-outlined text-xl block">add_shopping_cart</span>
-                                    </button>
-                                </div>
-                                <div class="p-5 flex flex-col flex-grow">
-                                    <div class="mb-1">
-                                        <p class="text-xs text-primary/50 uppercase tracking-widest font-semibold">{{$product->category->name}}</p>
-                                    </div>
-                                    <h3 class="font-serif text-xl font-medium text-primary dark:text-white mb-2 group-hover:text-accent transition-colors">
-                                        <a href="#">{{ $product->name}}</a>
-                                    </h3>
-                                    <p class="text-sm text-primary/70 dark:text-white/70 mb-4 line-clamp-2">
-                                        {{ $product->description}}
-                                    </p>
-                                    <div class="mt-auto flex items-center justify-between">
-                                        <span class="font-serif text-lg font-bold text-primary dark:text-white">{{ $product->price }}</span>
-                                        <div class="flex gap-1">
-                                            <span class="w-3 h-3 rounded-full bg-[#5D4037]" title="Dark Roast"></span>
-                                            <span class="w-3 h-3 rounded-full bg-[#795548]" title="Medium-Dark"></span>
-                                        </div>
-                                    </div>
+                {{-- Container Utama --}}
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 p-4">
+                    @foreach ($products as $product)
+                    {{-- Card Begin --}}
+                    <div class="group relative flex flex-col bg-white dark:bg-[#121212] rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2">
+                        
+                        {{-- Image Area --}}
+                        <div class="relative aspect-[4/5] m-3 overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-800">
+                            <a href="{{ route('shop.detail', $product->id) }}" class="block w-full h-full">
+                                <img 
+                                    alt="{{ $product->name }}" 
+                                    class="w-full h-full object-cover object-center scale-105 group-hover:scale-110 transition-transform duration-700 ease-in-out" 
+                                    src="{{ asset('storage/' . $product->image) }}"
+                                    onerror="this.src='https://images.unsplash.com/photo-1559056199-641a0ac8b55e?q=80&w=800&auto=format&fit=crop'"
+                                />
+                            </a>
+
+                            {{-- Glassmorphism Badge --}}
+                            @if($loop->first)
+                            <div class="absolute top-4 left-4">
+                                <span class="backdrop-blur-md bg-white/70 dark:bg-black/40 border border-white/20 text-primary dark:text-white text-[10px] font-bold px-4 py-2 rounded-full uppercase tracking-[0.15em] shadow-sm">
+                                    Bestseller
+                                </span>
+                            </div>
+                            @endif
+
+                            {{-- Quick Add Button --}}
+                            <a href="{{ route('order', $product->id) }}"
+                                class="absolute bottom-4 right-4 translate-y-4 opacity-0
+                                    group-hover:translate-y-0 group-hover:opacity-100
+                                    transition-all duration-500
+                                    bg-accent text-white px-5 py-3 rounded-2xl shadow-xl
+                                    hover:scale-110 active:scale-95
+                                    flex items-center gap-2"
+                            >
+                                <span class="material-symbols-outlined text-xl">shopping_bag</span>
+                                <span class="font-semibold">Beli</span>
+                            </a>
+
+                        </div>
+
+                        {{-- Content Area --}}
+                        <div class="px-7 pb-8 pt-4 flex flex-col flex-grow">
+                            {{-- Category & Roast Level --}}
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="text-[11px] text-accent font-bold uppercase tracking-widest leading-none">
+                                    {{ $product->category->name }}
+                                </span>
+                                <div class="flex -space-x-1">
+                                    <span class="w-3 h-3 rounded-full border-2 border-white dark:border-zinc-900 bg-[#5D4037]" title="Dark"></span>
+                                    <span class="w-3 h-3 rounded-full border-2 border-white dark:border-zinc-900 bg-[#795548]" title="Medium"></span>
                                 </div>
                             </div>
-                        </a>
-                            
-                        @endforeach
-                    {{-- card product end --}}
-                    
 
-                  
+                            {{-- Title --}}
+                            <h3 class="font-serif text-2xl font-medium text-primary dark:text-zinc-100 mb-3 group-hover:text-accent transition-colors duration-300">
+                                <a href="{{ route('shop.detail', $product->id) }}">
+                                    {{ $product->name }}
+                                </a>
+                            </h3>
 
+                            {{-- Description --}}
+                            <p class="text-sm text-gray-500 dark:text-zinc-400 mb-6 line-clamp-2 leading-relaxed font-light">
+                                {{ $product->description }}
+                            </p>
+
+                            {{-- Price & Action --}}
+                            <div class="mt-auto flex items-end justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-[10px] text-gray-400 dark:text-zinc-500 uppercase tracking-tighter mb-1">Price</span>
+                                    <span class="text-2xl font-bold text-primary dark:text-white tracking-tight">
+                                        <span class="text-sm font-medium mr-0.5">Rp</span>{{ number_format($product->price, 0, ',', '.') }}
+                                    </span>
+                                </div>
+                                
+                                <a href="{{route('shop.detail', $product->id)}}">
+                                    <div class="h-12 w-12 rounded-2xl border border-gray-100 dark:border-zinc-800 flex items-center justify-center group-hover:border-accent group-hover:bg-accent/5 transition-all duration-500">
+                                        <span class="material-symbols-outlined text-primary dark:text-white group-hover:text-accent">arrow_forward</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
 
                 {{-- paginate begin --}}
